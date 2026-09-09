@@ -1,14 +1,7 @@
 name: Code Coverage
 
 on:
-  push:
-    paths-ignore:
-      - 'README.md'
-      - 'doc/**'
-  pull_request:
-    paths-ignore:
-      - 'README.md'
-      - 'doc/**'
+  workflow_dispatch: 
 
 jobs:
   code-coverage:
@@ -26,7 +19,7 @@ jobs:
       run: cmake --build .
 
     - working-directory: build/
-      run: ctest --output-on-failure
+      run: ctest -V --output-on-failure
 
-    - working-directory: build/
-      run: bash <(curl -s https://codecov.io/bash)
+    # - working-directory: build/
+    #   run: bash <(curl -s https://codecov.io/bash)
